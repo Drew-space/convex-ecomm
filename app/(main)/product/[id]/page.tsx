@@ -17,7 +17,7 @@ const page = async ({ params }: products) => {
     id: id as Id<"products">,
   });
   return (
-    <div className=" bg-white">
+    <div className="container mx-auto">
       <div className=" mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-8 md:grid-cols-2">
           <ImageGallery images={product?.images || []} />
