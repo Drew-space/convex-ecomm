@@ -7,18 +7,13 @@ import { Button } from "./ui/button";
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ShoppingCart02Icon } from "@hugeicons/core-free-icons";
+import { links } from "@/constants";
 
 type Props = {
   openCart: () => void;
 };
 
 const Navbar = ({ openCart }: Props) => {
-  const links = [
-    { name: "Home", href: "/" },
-    { name: "Men", href: "/Men" },
-    { name: "Women", href: "/Women" },
-    { name: "Teens", href: "/Teens" },
-  ];
   const [openCartModal, setOpenCartModal] = useState(false);
 
   const pathname = usePathname();
