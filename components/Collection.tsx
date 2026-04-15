@@ -34,7 +34,7 @@ const Collection = async () => {
           {products.slice(0, 4).map((product) => (
             <div key={product._id} className="group relative">
               <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
-                <Link href={``}>
+                <Link href={`product/${product._id}`}>
                   <Image
                     src={product.imageUrl}
                     alt={product.name}
