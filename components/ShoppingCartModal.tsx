@@ -1,21 +1,26 @@
+"use client";
+
 import React from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetDescription,
 } from "./ui/sheet";
 
-const ShoppingCartModal = () => {
+type Props = {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+};
+
+const ShoppingCartModal = ({ open, onOpenChange }: Props) => {
   return (
-    <Sheet defaultOpen>
-      <SheetTrigger>Open</SheetTrigger>
-      <SheetContent className="sm-max-w-lg w-[90vh]">
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent className="sm:max-w-lg w-[90vw]">
         <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>This action cannot be undone.</SheetDescription>
+          <SheetTitle>Your Cart</SheetTitle>
+          <SheetDescription>Items you added will appear here.</SheetDescription>
         </SheetHeader>
       </SheetContent>
     </Sheet>

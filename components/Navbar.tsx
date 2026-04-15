@@ -2,17 +2,24 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { ShoppingBagIcon, ShoppingCart, ShoppingCartIcon } from "lucide-react";
 
-const Navbar = () => {
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ShoppingCart02Icon } from "@hugeicons/core-free-icons";
+
+type Props = {
+  openCart: () => void;
+};
+
+const Navbar = ({ openCart }: Props) => {
   const links = [
     { name: "Home", href: "/" },
     { name: "Men", href: "/Men" },
     { name: "Women", href: "/Women" },
     { name: "Teens", href: "/Teens" },
   ];
+  const [openCartModal, setOpenCartModal] = useState(false);
 
   const pathname = usePathname();
 
@@ -49,15 +56,11 @@ const Navbar = () => {
 
         <div className="flex divide-x  border-r sm:border-l">
           <Button
+            onClick={openCart}
             variant={"outline"}
             className=" flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
           >
-            <ShoppingCart />
-            <ShoppingCartIcon />
-
-            <span className=" hidden text-xs font-semibold text-gray-500 sm:block ">
-              Cart
-            </span>
+            <HugeiconsIcon className="size-7" icon={ShoppingCart02Icon} />
           </Button>
         </div>
       </div>
