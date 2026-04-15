@@ -1,0 +1,5 @@
+{"name":"Classic Men's T-Shirt","description":"Comfortable cotton t-shirt for everyday wear.","price":150,"imageUrl":"/image/male_category.png","images":["/image/male_category.png","/image/male2_category.png"],"category":"Men","stock":20}
+{"name":"Men's Hoodie","description":"Warm hoodie perfect for cool evenings.","price":350,"imageUrl":"/image/male2_category.png","images":["/image/male2_category.png","/image/male_category.png"],"category":"Men","stock":12}
+{"name":"Teen Street Wear Set","description":"Trendy outfit for teens.","price":280,"imageUrl":"/image/teen_category.png","images":["/image/teen_category.png"],"category":"Teens","stock":18}
+{"name":"Women's Casual Dress","description":"Light and stylish dress for outings.","price":420,"imageUrl":"/image/lady_category.png","images":["/image/lady_category.png"],"category":"Women","stock":15}
+{"name":"Women's Handbag","description":"Elegant handbag for daily use.","price":390,"imageUrl":"/image/lady_category.png","images":["/image/lady_category.png"],"category":"Women","stock":10}
