@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import { Metadata } from "next";
+import ShoppingCartModal from "@/components/ShoppingCartModal";
 
 export const metadata: Metadata = {
   title: "Ecommercr with convex , clerk , and paystack",
@@ -15,6 +16,7 @@ export default function MainLayout({
   return (
     <div className={cn("h-full antialiased font-sans")}>
       <Navbar />
+      <ShoppingCartModal />
 
       <main className="flex-1 pt-8 ">{children}</main>
     </div>
