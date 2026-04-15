@@ -1,5 +1,4 @@
-{"name":"Classic Men's T-Shirt","description":"Comfortable cotton t-shirt for everyday wear.","price":150,"imageUrl":"/image/male_category.png","images":["/image/male_category.png","/image/male2_category.png"],"category":"Men","stock":20}
-{"name":"Men's Hoodie","description":"Warm hoodie perfect for cool evenings.","price":350,"imageUrl":"/image/male2_category.png","images":["/image/male2_category.png","/image/male_category.png"],"category":"Men","stock":12}
-{"name":"Teen Street Wear Set","description":"Trendy outfit for teens.","price":280,"imageUrl":"/image/teen_category.png","images":["/image/teen_category.png"],"category":"Teens","stock":18}
-{"name":"Women's Casual Dress","description":"Light and stylish dress for outings.","price":420,"imageUrl":"/image/lady_category.png","images":["/image/lady_category.png"],"category":"Women","stock":15}
-{"name":"Women's Handbag","description":"Elegant handbag for daily use.","price":390,"imageUrl":"/image/lady_category.png","images":["/image/lady_category.png"],"category":"Women","stock":10}
+{"name":"Nike Windrunner","description":"The Nike Windrunner is more than just a jacket","price":15000,"imageUrl":"/image/male_category.png","images":["/image/male_category.png","/image/male2.png","/image/male3.png"],"category":"Men","stock":20}
+{"name":"Nike Air Force","description":"Classic Nike sneaker","price":8500,"imageUrl":"/image/white_shoe1.png","images":["/image/white_shoe1.png","/image/white_shoe2.png"],"category":"Teens","stock":12}
+{"name":"Nike Phoenix Fleece","description":"Warm fleece outfit","price":3500,"imageUrl":"/image/lady_category.png","images":["/image/lady_category.png","/image/lady2.png"],"category":"Women","stock":18}
+{"name":"Nike VaporMax","description":"High performance sneaker","price":42000,"imageUrl":"/image/male2_category.png","images":["/image/blackshoe.png","/image/blackshoe2.png", "/image/male2_category.png"],"category":"Men","stock":200}
