@@ -6,8 +6,9 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 
 import { HugeiconsIcon } from "@hugeicons/react";
-import { ShoppingCart02Icon } from "@hugeicons/core-free-icons";
+import { Logout01Icon, ShoppingCart02Icon } from "@hugeicons/core-free-icons";
 import { links } from "@/constants";
+import { Show, SignIn, SignInButton, SignOutButton } from "@clerk/nextjs";
 
 type Props = {
   openCart: () => void;
@@ -46,15 +47,79 @@ const Navbar = ({ openCart }: Props) => {
             </div>
           ))}
         </nav>
-
+        {/* 
         <div className="flex divide-x  border-r sm:border-l">
-          <Button
-            onClick={openCart}
-            variant={"outline"}
-            className=" flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
-          >
-            <HugeiconsIcon className="size-7" icon={ShoppingCart02Icon} />
-          </Button>
+          <Show when="signed-out">
+            <Button
+              variant={"ghost"}
+              onClick={openCart}
+              className=" flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+            >
+              <HugeiconsIcon className="size-7" icon={ShoppingCart02Icon} />
+            </Button>
+
+            <SignInButton>
+              <Button
+                variant={"ghost"}
+               
+                className=" flex justify-between items-center gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+              >
+            
+                <p>Login</p>
+              </Button>
+            </SignInButton>
+          </Show>
+
+          <Show when="signed-in">
+            <Button
+              variant={"ghost"}
+              onClick={openCart}
+              className=" flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+            >
+              <HugeiconsIcon className="size-7" icon={ShoppingCart02Icon} />
+            </Button>
+
+            <SignOutButton>
+              <Button
+                variant={"ghost"}
+             
+                className=" flex justify-between items-center gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+              >
+                <HugeiconsIcon className="size-7" icon={Logout01Icon} />
+                <p>Logoout</p>
+              </Button>
+            </SignOutButton>
+          </Show>
+        </div> */}
+        <div className="flex divide-x border-r sm:border-l">
+          {/* CART (always visible) */}
+          <div>
+            <Button
+              variant="ghost"
+              onClick={openCart}
+              className="flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
+            >
+              <HugeiconsIcon className="size-7" icon={ShoppingCart02Icon} />
+            </Button>
+          </div>
+
+          {/* AUTH */}
+          <div className="flex items-center justify-center h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24">
+            <Show when="signed-out">
+              <SignInButton>
+                <button className="text-sm font-medium">Login</button>
+              </SignInButton>
+            </Show>
+
+            <Show when="signed-in">
+              <SignOutButton>
+                <button className="text-sm flex items-center font-medium">
+                  <HugeiconsIcon className="size-7" icon={Logout01Icon} />
+                  Logout
+                </button>
+              </SignOutButton>
+            </Show>
+          </div>
         </div>
       </div>
     </header>
