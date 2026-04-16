@@ -115,7 +115,7 @@ const Navbar = ({ openCart }: Props) => {
               <SignOutButton>
                 <button className="text-sm flex items-center font-medium">
                   <HugeiconsIcon className="size-7" icon={Logout01Icon} />
-                  Logout
+                  <p className="hidden md:flex"> Logout</p>
                 </button>
               </SignOutButton>
             </Show>
