@@ -1,4 +1,4 @@
-import { links } from "@/constants";
+import { Collectionlinks, links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -44,7 +44,7 @@ const Hero = () => {
 
       <div className="flex flex-col items-center justify-between  gap-8 md:flex-row">
         <div className="flex h-12 w-64 divide-x overflow-hidden rounded-lg border">
-          {links.slice(1).map((link, index) => (
+          {Collectionlinks.map((link, index) => (
             <Link
               key={index}
               href={link.href}

@@ -12,7 +12,6 @@ const CategoryPage = async ({
 }) => {
   const { category } = await params;
 
-  // 🔥 Fetch from Convex instead of Sanity
   const data = await fetchQuery(api.product.getByCategory, {
     category,
   });

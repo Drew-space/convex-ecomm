@@ -6,26 +6,34 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 
 import { HugeiconsIcon } from "@hugeicons/react";
-import { Logout01Icon, ShoppingCart02Icon } from "@hugeicons/core-free-icons";
+import {
+  Logout01Icon,
+  Menu05Icon,
+  ShoppingCart02Icon,
+} from "@hugeicons/core-free-icons";
 import { links } from "@/constants";
 import { Show, SignIn, SignInButton, SignOutButton } from "@clerk/nextjs";
 
 type Props = {
   openCart: () => void;
+  openModal: () => void;
 };
 
-const Navbar = ({ openCart }: Props) => {
+const Navbar = ({ openCart, openModal }: Props) => {
   const pathname = usePathname();
 
   return (
     <header className=" border-b vorder-2 border-t max-sm:mt-2">
       <div className=" flex items-center justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl">
+        <div onClick={openModal} className="flex md:hidden">
+          <HugeiconsIcon icon={Menu05Icon} />
+        </div>
         <Link href="/">
           <h1 className="text-base md:text-4xl font-bold ">
             Next<span className="text-primary">commerce</span>
           </h1>
         </Link>
-        <nav className="hidden gap-12 lg:flex 2xl:ml-16">
+        <nav className="hidden gap-9 lg:flex 2xl:ml-16">
           {links.map((link, i) => (
             <div key={i}>
               {pathname === link.href ? (
