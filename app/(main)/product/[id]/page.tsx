@@ -1,10 +1,13 @@
+import BackButton from "@/components/BackButton";
 import ImageGallery from "@/components/ImageGallery";
 import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import { CircleArrowLeft02Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { fetchQuery } from "convex/nextjs";
 import { Minus, Plus, Star, Truck } from "lucide-react";
-import React from "react";
+import Link from "next/link";
 
 interface products {
   params: Promise<{ id: string }>;
@@ -18,6 +21,10 @@ const page = async ({ params }: products) => {
   });
   return (
     <div className="container mx-auto">
+      <div className="mx-auto max-w-7xl px-4 md:px-8 ">
+        <BackButton />
+      </div>
+
       <div className=" mx-auto max-w-7xl px-4 md:px-8">
         <div className="grid gap-8 md:grid-cols-2">
           <ImageGallery images={product?.images || []} />
@@ -33,7 +40,9 @@ const page = async ({ params }: products) => {
               <span className="text-sm text-gray-500">56 Ratings</span>
             </div>
 
-            <p className="text-xl font-bold">${product?.price}</p>
+            <p className="text-xl font-bold">
+              ₦{product?.price.toLocaleString()}
+            </p>
 
             <div className="my-4 flex items-center gap-2 text-gray-500">
               <Truck className="h-5 w-5" />

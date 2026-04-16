@@ -1,26 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { fetchQuery } from "convex/nextjs";
 import { api } from "@/convex/_generated/api";
-import { ConvexHttpClient } from "convex/browser";
 
-const CategoryPage = async () => {
-  const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+type Category = "Men" | "Women" | "Teens";
 
-  const allProducts = await convex.query(api.product.getAllProcucts);
+const CategoryPage = async ({
+  params,
+}: {
+  params: Promise<{ category: Category }>;
+}) => {
+  const { category } = await params;
+
+  // 🔥 Fetch from Convex instead of Sanity
+  const data = await fetchQuery(api.product.getByCategory, {
+    category,
+  });
 
   return (
     <div>
-      <div className="bg-white ">
-        <div className="mx-auto max-w-2xl   px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-              Our Products
+              Our Products for {category}
             </h2>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-4 xl:gap-x-8">
-            {allProducts.map((product) => (
+            {data.map((product) => (
               <div key={product._id} className="group relative">
                 <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
                   <Link href={`/product/${product._id}`}>
