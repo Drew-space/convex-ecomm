@@ -3,7 +3,7 @@ import Link from "next/link";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "@/convex/_generated/api";
 
-type Category = "Men" | "Women" | "Teens";
+type Category = "Men" | "Women" | "Teens" | "all";
 
 const CategoryPage = async ({
   params,
@@ -12,9 +12,12 @@ const CategoryPage = async ({
 }) => {
   const { category } = await params;
 
-  const data = await fetchQuery(api.product.getByCategory, {
-    category,
-  });
+  const data =
+    category === "all"
+      ? await fetchQuery(api.product.getAllProcucts, {})
+      : await fetchQuery(api.product.getByCategory, {
+          category: category as "Men" | "Women" | "Teens",
+        });
 
   return (
     <div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { api } from "@/convex/_generated/api";
 import { ConvexHttpClient } from "convex/browser";
 
-const CategoryPage = async () => {
+const ProductPage = async () => {
   const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
   const allProducts = await convex.query(api.product.getAllProcucts);
@@ -60,4 +60,4 @@ const CategoryPage = async () => {
   );
 };
 
-export default CategoryPage;
+export default ProductPage;
