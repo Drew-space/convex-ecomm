@@ -1,6 +1,7 @@
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { api } from "@/convex/_generated/api";
+import { RedirectToSignIn, useAuth } from "@clerk/nextjs";
 import { CircleArrowLeft02Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ConvexHttpClient } from "convex/browser";

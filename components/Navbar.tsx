@@ -65,50 +65,7 @@ const Navbar = ({ openCart, openModal }: Props) => {
             </div>
           ))}
         </nav>
-        {/* 
-        <div className="flex divide-x  border-r sm:border-l">
-          <Show when="signed-out">
-            <Button
-              variant={"ghost"}
-              onClick={openCart}
-              className=" flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
-            >
-              <HugeiconsIcon className="size-7" icon={ShoppingCart02Icon} />
-            </Button>
 
-            <SignInButton>
-              <Button
-                variant={"ghost"}
-               
-                className=" flex justify-between items-center gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
-              >
-            
-                <p>Login</p>
-              </Button>
-            </SignInButton>
-          </Show>
-
-          <Show when="signed-in">
-            <Button
-              variant={"ghost"}
-              onClick={openCart}
-              className=" flex flex-col gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
-            >
-              <HugeiconsIcon className="size-7" icon={ShoppingCart02Icon} />
-            </Button>
-
-            <SignOutButton>
-              <Button
-                variant={"ghost"}
-             
-                className=" flex justify-between items-center gap-y-1.5 h-12 w-12 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-none"
-              >
-                <HugeiconsIcon className="size-7" icon={Logout01Icon} />
-                <p>Logoout</p>
-              </Button>
-            </SignOutButton>
-          </Show>
-        </div> */}
         <div className="flex divide-x border-r sm:border-l">
           {/* CART (always visible) */}
           <div>
@@ -128,26 +85,6 @@ const Navbar = ({ openCart, openModal }: Props) => {
                 <button className="text-sm font-medium">Login</button>
               </SignInButton>
             </Show>
-
-            {/* <Show when="signed-in">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <HugeiconsIcon icon={UserCircleIcon} />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                    <DropdownMenuItem>
-                      <SignOutButton>
-                        <button className="text-sm flex items-center font-medium">
-                          <p className="hidden md:flex"> Logout</p>
-                        </button>
-                      </SignOutButton>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </Show> */}
 
             <Show when="signed-in">
               <DropdownMenu>

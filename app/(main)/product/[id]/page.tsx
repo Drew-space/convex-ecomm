@@ -9,15 +9,19 @@ import { useCartStore } from "@/app/hooks/use-cart-store";
 import { useQuery } from "convex/react";
 import { Minus, Plus, Star, Truck } from "lucide-react";
 import { use, useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { RedirectToSignIn, useAuth, useClerk } from "@clerk/nextjs";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
 const ProductDetailPage = ({ params }: PageProps) => {
+  const { isSignedIn } = useAuth();
   const { id } = use(params);
   const router = useRouter();
+  const { redirectToSignIn } = useClerk(); // ✅ function, not component
+  const pathname = usePathname();
 
   // Live subscription — UI updates automatically if stock hits 0
   const product = useQuery(api.product.getProductById, {
@@ -54,6 +58,11 @@ const ProductDetailPage = ({ params }: PageProps) => {
 
   // Sets a single buy-now item, bypasses cart, goes straight to checkout
   const handleCheckoutNow = () => {
+    if (!isSignedIn) {
+      // ✅ redirect to sign in, return to this product page after
+      redirectToSignIn({ redirectUrl: `/product/${product._id}` });
+      return;
+    }
     setBuyNowItem({
       productId: product._id,
       name: product.name,

@@ -11,7 +11,8 @@ import {
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { RedirectToSignIn, useAuth, useClerk } from "@clerk/nextjs";
 
 type Props = {
   open: boolean;
@@ -19,6 +20,11 @@ type Props = {
 };
 
 const ShoppingCartModal = ({ open, onOpenChange }: Props) => {
+  const { isSignedIn } = useAuth();
+
+  const { redirectToSignIn } = useClerk(); // ✅ function, not component
+  const pathname = usePathname();
+
   const { items, removeItem, updateQuantity, getTotalPrice, setCheckoutMode } =
     useCartStore();
   const router = useRouter();
@@ -26,6 +32,10 @@ const ShoppingCartModal = ({ open, onOpenChange }: Props) => {
   const total = getTotalPrice();
 
   const handleCheckout = () => {
+    if (!isSignedIn) {
+      redirectToSignIn({ redirectUrl: pathname });
+      return;
+    }
     // Set mode to cart so checkout page reads from items[], not buyNowItem
     setCheckoutMode("cart");
     onOpenChange(false); // close modal
