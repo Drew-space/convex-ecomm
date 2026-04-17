@@ -84,6 +84,22 @@ export const verifyPayment = action({
       });
     }
 
+    // Fetch the order to get items + address + email
+    const order = await ctx.runQuery(api.orders.getOrderByReference, {
+      paystackReference: args.reference,
+    });
+
+    if (order) {
+      await ctx.runAction(api.email.sendOrderConfirmation, {
+        customerName: order.deliveryAddress.fullName,
+        email: order.email,
+        reference: args.reference,
+        items: order.items,
+        totalAmount: order.totalAmount,
+        deliveryAddress: order.deliveryAddress,
+      });
+    }
+
     return { status: data.data.status as string };
   },
 });

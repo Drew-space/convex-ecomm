@@ -100,3 +100,16 @@ export const getByClerkId = query({
       .collect();
   },
 });
+
+// convex/orders.ts
+export const getOrderByReference = query({
+  args: { paystackReference: v.string() },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("orders")
+      .withIndex("by_reference", (q) =>
+        q.eq("paystackReference", args.paystackReference),
+      )
+      .first();
+  },
+});
