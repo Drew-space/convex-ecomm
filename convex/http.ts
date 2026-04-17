@@ -82,28 +82,41 @@ http.route({
 
 // Add this to your existing http.ts alongside the clerk webhook
 // convex/http.ts — your existing file, just update the paystackVerify handler
-
 const paystackVerify = httpAction(async (ctx, request) => {
   const { searchParams } = new URL(request.url);
   const reference = searchParams.get("reference");
 
   if (!reference) {
-    return Response.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL}/checkout?error=missing_ref`,
-    );
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: `${process.env.NEXT_PUBLIC_APP_URL}/checkout`,
+      },
+    });
   }
 
   try {
     await ctx.runAction(api.paystack.verifyPayment, { reference });
-    // Redirect to orders page with success flag
-    return Response.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL}/orders?success=true`,
-    );
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: `${process.env.NEXT_PUBLIC_APP_URL}/success`,
+      },
+    });
   } catch (err) {
-    return Response.redirect(
-      `${process.env.NEXT_PUBLIC_APP_URL}/orders?error=payment_failed`,
-    );
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: `${process.env.NEXT_PUBLIC_APP_URL}/checkout?error=payment_failed`,
+      },
+    });
   }
+});
+
+http.route({
+  path: "/paystack-verify",
+  method: "GET",
+  handler: paystackVerify,
 });
 
 export default http;

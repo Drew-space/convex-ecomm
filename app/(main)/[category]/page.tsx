@@ -3,6 +3,10 @@ import Link from "next/link";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "@/convex/_generated/api";
 
+import { Button } from "@/components/ui/button";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CircleArrowLeft02Icon } from "@hugeicons/core-free-icons";
+
 type Category = "Men" | "Women" | "Teens" | "all";
 
 const CategoryPage = async ({
@@ -23,10 +27,19 @@ const CategoryPage = async ({
     <div>
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="flex justify-between items-center">
+          <div className="flex  justify-between items-center">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900">
               Our Products for {category}
             </h2>
+
+            <div className="md:hidden">
+              <Button className="bg-primary  text-white">
+                <Link className="flex items-center gap-2" href={"/"}>
+                  <HugeiconsIcon icon={CircleArrowLeft02Icon} />
+                  Go back
+                </Link>
+              </Button>
+            </div>
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-4 xl:gap-x-8">

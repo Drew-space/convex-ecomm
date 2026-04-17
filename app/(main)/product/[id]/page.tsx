@@ -15,7 +15,7 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-const ProductPage = ({ params }: PageProps) => {
+const ProductDetailPage = ({ params }: PageProps) => {
   const { id } = use(params);
   const router = useRouter();
 
@@ -147,4 +147,4 @@ const ProductPage = ({ params }: PageProps) => {
   );
 };
 
-export default ProductPage;
+export default ProductDetailPage;

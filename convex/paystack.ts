@@ -49,7 +49,7 @@ export const initializePayment = action({
         email: args.email,
         amount: args.totalAmount * 100,
         reference,
-        callback_url: `${process.env.NEXT_PUBLIC_CONVEX_SITE_URL}/paystack-verify`,
+        callback_url: `${process.env.CONVEX_SITE_URL}/paystack-verify`,
       }),
     });
 

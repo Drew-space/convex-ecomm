@@ -10,9 +10,19 @@ import {
   Logout01Icon,
   Menu05Icon,
   ShoppingCart02Icon,
+  UserCircleIcon,
 } from "@hugeicons/core-free-icons";
 import { links } from "@/constants";
 import { Show, SignIn, SignInButton, SignOutButton } from "@clerk/nextjs";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 type Props = {
   openCart: () => void;
@@ -34,7 +44,7 @@ const Navbar = ({ openCart, openModal }: Props) => {
           </h1>
         </Link>
         <nav className="hidden gap-9 lg:flex 2xl:ml-16">
-          {links.map((link, i) => (
+          {links.slice(1).map((link, i) => (
             <div key={i}>
               {pathname === link.href ? (
                 <Link
@@ -119,13 +129,49 @@ const Navbar = ({ openCart, openModal }: Props) => {
               </SignInButton>
             </Show>
 
+            {/* <Show when="signed-in">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <HugeiconsIcon icon={UserCircleIcon} />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuGroup>
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuItem>
+                      <SignOutButton>
+                        <button className="text-sm flex items-center font-medium">
+                          <p className="hidden md:flex"> Logout</p>
+                        </button>
+                      </SignOutButton>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </Show> */}
+
             <Show when="signed-in">
-              <SignOutButton>
-                <button className="text-sm flex items-center font-medium">
-                  <HugeiconsIcon className="size-7" icon={Logout01Icon} />
-                  <p className="hidden md:flex"> Logout</p>
-                </button>
-              </SignOutButton>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center justify-center">
+                    <HugeiconsIcon icon={UserCircleIcon} />
+                  </button>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent
+                  align="end"
+                  sideOffset={8}
+                  className="w-40"
+                >
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+
+                  <DropdownMenuItem asChild>
+                    <SignOutButton>
+                      <button className="w-full text-left">Logout</button>
+                    </SignOutButton>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </Show>
           </div>
         </div>
